@@ -4,7 +4,7 @@ name: 'Execucao agendada'
 # Gatilho de execução agendada por períodos definidos no repositório = schedule
 on:
     schedule:
-        - cron: '15 16 * * 6'
+        - cron: '20 19 * * 6'
 
 jobs:
     # - baixar as dependencias
