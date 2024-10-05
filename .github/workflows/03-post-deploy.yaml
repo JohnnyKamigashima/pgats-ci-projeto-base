@@ -1,0 +1,42 @@
+# nome que vai aparecer no github
+name: 'Execucao agendada'
+# triggers ou gatilhos de execucao
+# Gatilho de execução agendada por períodos definidos no repositório = schedule
+on:
+    schedule:
+        - cron: '20 13 * * 6'
+
+jobs:
+    # - baixar as dependencias
+    # - compilar
+    # - testar
+    e2e-tests:
+        # maquina que vai rodar
+        runs-on: ['ubuntu-latest']
+
+        #passo a paso das acoes do job
+        steps:
+        # - run: echo 'Execucao manual'
+            - uses: actions/checkout@v4
+            # - uses: actions/setup-node@v4
+            #     with:
+            #         node-version: lts/*
+            - name: Instalando Yarn
+              run: npm install -g yarn
+
+            - name: Instalando dependências
+              run: yarn
+
+            - name: Instalando Playwright
+              run: yarn playwright install --with-deps
+
+            - name: Testes E2E (end-to-end)
+              run: yarn run e2e
+
+            - uses: actions/upload-artifact@v4
+            # por padrao a pipeline cancela se houver erro para evitar que ele cancele o passo seguinte no caso de erro, se quiser que a pipeline continue, basta adicionar o parametro 'if: ${{ !cancelled() }}'
+              if: ${{ !cancelled() }}
+              with:
+                  name: relatorio-de-testes
+                  path: ./playwright-report
+
