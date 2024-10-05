@@ -1,9 +1,10 @@
 # nome que vai aparecer no github
-name: 'Execucao manual'
+name: 'Execucao agendada'
 # triggers ou gatilhos de execucao
-# gatilho de exec manual = workflow_diospatch
+# Gatilho de execução agendada por períodos definidos no repositório = schedule
 on:
-    workflow_dispatch:
+    schedule:
+        - cron: '15 16 * * 6'
 
 jobs:
     # - baixar as dependencias
