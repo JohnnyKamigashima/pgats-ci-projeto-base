@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["robo", "robocoasters"]
+  "cSpell.words": [
+    "robo",
+    "robocoasters"
+  ],
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/01-manual-exec.yaml"
+  ]
 }
