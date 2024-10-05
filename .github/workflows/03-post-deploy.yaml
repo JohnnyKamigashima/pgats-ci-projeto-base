@@ -1,10 +1,12 @@
 # nome que vai aparecer no github
-name: 'Execucao agendada'
+name: 'Execucao por deploy'
 # triggers ou gatilhos de execucao
-# Gatilho de execução agendada por períodos definidos no repositório = schedule
+# Gatilho de execução por deploy após outro workflow executado = workflow_run
 on:
-    schedule:
-        - cron: '27 13 * * 6'
+    workflow_run:
+      workflows: ['Execucao manual']
+      types:
+          - completed
 
 jobs:
     # - baixar as dependencias
