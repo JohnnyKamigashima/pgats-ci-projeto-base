@@ -6,3 +6,4 @@ reports
 /blob-report/
 /playwright/.cache/
 results.xml
+yarn.lock
