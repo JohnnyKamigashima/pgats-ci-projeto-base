@@ -17,9 +17,11 @@ jobs:
     steps:
       # - run: echo 'Execucao manual'
       - uses: actions/checkout@v4
+      - uses: bahmutov/npm-install@v1
       # - uses: actions/setup-node@v4
       #     with:
         #         node-version: lts/*
+
       - name: Instalando Yarn
         run: npm install -g yarn
 
@@ -28,9 +30,6 @@ jobs:
 
       - name: Instalando Playwright
         run: yarn playwright install --with-deps
-
-      - name: Cache
-        uses: actions/cache@v4.1.1
 
       - name: Testes E2E (end-to-end)
         run: yarn run e2e
