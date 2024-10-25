@@ -1,0 +1,31 @@
+# CI de Nível 04 - Disparo dentro do fluxo de CI de desenvolvimento
+name: 'Execucao integrada'
+# triggers ou gatilhos de execucao
+# Gatilho de execução por deploy após outro workflow executado = workflow_run
+on:
+  workflow_dispatch:
+
+jobs:
+  # - baixar as dependencias
+  # - compilar
+  # - testar
+  e2e-tests:
+    # maquina que vai rodar
+    runs-on: ubuntu-latest
+
+    #passo a paso das acoes do job
+    steps:
+      # - run: echo 'Execucao manual'
+      - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #     with:
+      #         node-version: lts/*
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Padronizaacaop de codigo
+        run: yarn lint
+
