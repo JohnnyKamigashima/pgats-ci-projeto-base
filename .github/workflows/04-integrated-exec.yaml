@@ -26,9 +26,6 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
-      - name: Corrigindo padronização de codigo
-        run     : npx prettier . --write
-
       - name: Padronização de codigo
         run: yarn lint
 
@@ -50,7 +47,7 @@ jobs:
           run: yarn
 
         - name: Instalando Playwright
-          run: yarn playwright install --with-deps
+          run: yarn playwright install
 
         - name: Testes E2E (end-to-end)
           run: yarn run e2e
