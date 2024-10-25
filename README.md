@@ -9,8 +9,8 @@
 
 2. Instale o [nodejs](https://nodejs.org/)
 
-3. Instale o Yarn - 
-`npm install -g yarn`
+3. Instale o Yarn -
+   `npm install -g yarn`
 
 ```sh {"id":"01J9EGBBE2MVKHJG2R5YQDYV18"}
 npm install -g yarn
