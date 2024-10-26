@@ -2,8 +2,7 @@
 name: 'Execucao integrada'
 # triggers ou gatilhos de execucao
 # Gatilho de execução por deploy após outro workflow executado = workflow_run
-on:
-  push
+on: push
 
 jobs:
   # - baixar as dependencias
