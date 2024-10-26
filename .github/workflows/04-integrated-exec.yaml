@@ -31,6 +31,7 @@ jobs:
 
   unit:
     runs-on: ubuntu-latest
+    needs: [inspection]
 
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +47,8 @@ jobs:
 
   e2e-tests:
     # maquina que vai rodar
-    runs-on: ['ubuntu-latest']
+    runs-on: [ubuntu-latest]
+    needs: [unit]
 
     #passo a paso das acoes do job
     steps:
