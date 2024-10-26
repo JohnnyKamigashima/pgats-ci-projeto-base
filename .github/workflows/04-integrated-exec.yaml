@@ -64,8 +64,13 @@ jobs:
       - name: Instalando Playwright
         run: yarn playwright install
 
+      - name: Subir aplicacao
+        run: yarn start &
+
       - name: Testes E2E (end-to-end)
         run: yarn run e2e
+        env:
+          URL: 'http://localhost:3000'
 
       - uses: actions/upload-artifact@v4
         # por padrao a pipeline cancela se houver erro para evitar que ele cancele o passo seguinte no caso de erro, se quiser que a pipeline continue, basta adicionar o parametro 'if: ${{ !cancelled() }}'
