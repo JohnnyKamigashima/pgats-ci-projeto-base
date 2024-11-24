@@ -1,35 +1,35 @@
 export class Router {
-  #global;
+  #global
   /** @type {Set<RouteCallback>} */
   #routerSubscriptions = new Set();
 
   /** @param {Pick<globalThis, 'addEventListener'> & { location: { hash: string }}} win */
   constructor(win = window) {
-    this.#global = win;
+    this.#global = win
     this.#global.addEventListener('hashchange', () => {
-      this.#routerSubscriptions.forEach((sub) => sub(this.#currentRoute));
-    });
+      this.#routerSubscriptions.forEach((sub) => sub(this.#currentRoute))
+    })
   }
 
   /** @param {string[]} route */
   navigate(route) {
-    this.#currentRoute = route;
+    this.#currentRoute = route
   }
   /** @param {RouteCallback} callback */
   onNext(callback) {
-    this.#routerSubscriptions.add(callback);
-    callback(this.#currentRoute);
+    this.#routerSubscriptions.add(callback)
+    callback(this.#currentRoute)
     return () => {
-      this.#routerSubscriptions.delete(callback);
-    };
+      this.#routerSubscriptions.delete(callback)
+    }
   }
 
   get #currentRoute() {
-    return this.#global.location.hash.substring(1).split('/');
+    return this.#global.location.hash.substring(1).split('/')
   }
   set #currentRoute(route) {
-    this.#global.location.hash = `#${route.join('/')}`;
+    this.#global.location.hash = `#${route.join('/')}`
   }
 }
 
-export const router = new Router();
+export const router = new Router()
